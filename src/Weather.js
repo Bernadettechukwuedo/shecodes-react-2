@@ -77,7 +77,7 @@ export default function Weather() {
                 <div id="weather-content-2"> <p>{day[newdate.getDay()]} {hours}:{minute}</p>
                     <p className="text-capitalize">Description: {weatherData.description} </p></div>
             </div>
-            <footer className="text-center " id="project-footer">This project was coded by Bernadette Chukwuedo and is open-sourced on <a href="www.java.com" target="blank" rel="noreferrer" >GitHub</a> and hosted on <a href="www.java.com" target="blank" rel="noreferrer" >Netlify</a></footer></div >)
+            <footer className="text-center " id="project-footer">This project was coded by Bernadette Chukwuedo and is open-sourced on <a href="https://github.com/Bernadettechukwuedo/shecodes-react-2" target="blank" rel="noreferrer" >GitHub</a> and hosted on <a href="https://bernadette-weather-website.netlify.app/" target="blank" rel="noreferrer" >Netlify</a></footer></div >)
 
     } else {
 
