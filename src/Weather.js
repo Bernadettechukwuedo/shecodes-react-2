@@ -94,7 +94,7 @@ export default function Weather() {
             ariaLabel="revolving-dot-loading"
             wrapperStyle={{}}
             wrapperClass=""
-        /> </div><div className="text-center fs-5 fw-bold ">Click on the temperature unit to view the temperature</div></div>)
+        /> </div><div className="text-center fs-5 fw-bold ">Click on the temperature's unit to view the temperature</div></div>)
 
     }
 
