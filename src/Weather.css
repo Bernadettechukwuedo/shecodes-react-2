@@ -50,9 +50,9 @@ form{
     width: 100px;
     padding:10px;
 }
-#submit:hover{background: #3F4C77;
+#submit:hover{background: #0D6EFD;
     border: 2px solid #B0B5CC;
-    color:#B0B5CC;}
+    color:black;}
 .emoji{
     
     height: 80px;
