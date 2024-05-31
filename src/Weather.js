@@ -86,7 +86,7 @@ export default function Weather() {
     } else {
 
         search();
-        return (<div className="Loader"><RevolvingDot
+        return (<div><div className="Loader"><RevolvingDot
             visible={true}
             height="80"
             width="80"
@@ -94,7 +94,7 @@ export default function Weather() {
             ariaLabel="revolving-dot-loading"
             wrapperStyle={{}}
             wrapperClass=""
-        /></div>)
+        /> </div><div className="text-center fs-5 fw-bold ">Click on the temperature unit to view the temperature</div></div>)
 
     }
 
