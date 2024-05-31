@@ -69,6 +69,12 @@ a:hover{
     margin:  0px 30px 10px 30px;
     font-weight: bold;
 }
+.Loader{
+    
+display: flex;
+justify-content: center;
+margin-top: 200px;
+}
 footer{
     color:#B0B5CC;
     margin: 20px;

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import WeatherForecast from "./WeatherForecast";
+import { RevolvingDot } from 'react-loader-spinner'
+
 export default function Weather() {
     const [weatherData, setData] = useState({});
     const [country, setCountry] = useState("Nigeria");
@@ -77,12 +80,22 @@ export default function Weather() {
                 <div id="weather-content-2"> <p>{day[newdate.getDay()]} {hours}:{minute}</p>
                     <p className="text-capitalize">Description: {weatherData.description} </p></div>
             </div>
+            <WeatherForecast />
             <footer className="text-center " id="project-footer">This project was coded by Bernadette Chukwuedo and is open-sourced on <a href="https://github.com/Bernadettechukwuedo/shecodes-react-2" target="blank" rel="noreferrer" >GitHub</a> and hosted on <a href="https://bernadette-weather-website.netlify.app/" target="blank" rel="noreferrer" >Netlify</a></footer></div >)
 
     } else {
 
         search();
-        return ("Loading..")
+        return (<div className="Loader"><RevolvingDot
+            visible={true}
+            height="80"
+            width="80"
+            color=" rgb(63, 76, 119)"
+            ariaLabel="revolving-dot-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+        /></div>)
+
     }
 
 
