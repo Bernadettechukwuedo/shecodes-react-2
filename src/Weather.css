@@ -4,6 +4,7 @@
 
 .country{
     color: white;
+    
 margin: 20px;
 font-size:50px}
 form{
@@ -48,8 +49,9 @@ form{
 #search{padding:10px}
 #submit{
     background:#1a73e8;
-    width: 100px;
+    width: 150px;
     padding:10px;
+    text-align: center;
 }
 #submit:hover{background: #0f5a9c;
     border: 2px solid #fff1eb;
@@ -95,7 +97,7 @@ footer{
   
   
     .country{
-        font-size: 30px;
+        font-size: 40px;
 
     
     }
@@ -108,7 +110,7 @@ footer{
         }
         .emoji{
         width: 80px;}
-        #submit{max-width:65px;
+        #submit{width:85px;
             text-align: center;
             
         }
