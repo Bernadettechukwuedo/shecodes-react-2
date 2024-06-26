@@ -50,7 +50,7 @@ export default function Weather() {
             // Your API call with Axios
             const apiKey = "bd3bb6534458ba51b48c49f5155745b6";
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${apiKey}&units=metric`;
-            const response = await axios.get(url);
+            await axios.get(url);
 
 
 
