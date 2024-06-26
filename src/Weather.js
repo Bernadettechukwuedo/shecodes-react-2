@@ -94,10 +94,12 @@ export default function Weather() {
                 </div>
             </div></form>
             {error && <div className="error-message">{error}</div>}
-            <div className="d-flex justify-content-between">
-                <div ><h1 className="country">{weatherData.name} </h1></div>
-                <div className="d-flex" id="temperature"><div className="temperature-value"><img className="emoji" src={weatherData.iconUrl} alt="weatherimage" />{Temperature}</div> <div className="unit"><a href="/" onClick={showcelsius}>°C</a> | <a href="/" onClick={showtemperature}>°F</a> </div></div>
-            </div><div className="d-flex justify-content-around" id="weather-content" >
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-7" ><h1 className="country">{weatherData.name} </h1></div>
+                    <div className="col-md-5" id="temperature"><div className="temperature-value"><img className="emoji" src={weatherData.iconUrl} alt="weatherimage" />{Temperature}</div> <div className="unit"><a href="/" onClick={showcelsius}>°C</a> | <a href="/" onClick={showtemperature}>°F</a> </div></div>
+                </div></div>
+            <div className="d-flex justify-content-around" id="weather-content" >
                 <div id="weather-content-1"><p>Humidity: {weatherData.humidity}% </p>
                     <p>Wind: {weatherData.wind}km/h </p>
                 </div>

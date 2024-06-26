@@ -25,12 +25,13 @@ form{
     width:200px;  
 }
 #temperature{
-    color: white;
-    margin: 20px;
-    
+    position: relative;
+    display: flex;
 }
 .unit{
-    font-size: 25px;;
+    font-size: 25px;
+   
+    position:relative;
 }
 .temperature-value{
     font-size: 50px;
