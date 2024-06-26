@@ -9,6 +9,8 @@ export default function Weather() {
     const [country, setCountry] = useState("Nigeria");
     const [ready, setReady] = useState(false);
     const [Temperature, setTemperature] = useState(weatherData.temperature);
+    const [error, setError] = useState(null);
+
     const newdate = new Date(weatherData.date * 1000);
     const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     let minute = newdate.getMinutes();
@@ -16,11 +18,11 @@ export default function Weather() {
     if (hours < 10) {
         hours = `0${hours}`
     }
-    if (minute < 10) {
+    if (minute < - 10) {
         minute = `0${minute}`
     }
     function showweather(response) {
-        console.log(response.data)
+
         setData({
             temperature: response.data.main.temp,
             humidity: response.data.main.humidity,
@@ -32,6 +34,7 @@ export default function Weather() {
 
         });
 
+        setTemperature(Math.round(response.data.main.temp));
         setReady(true);
     }
     function search() {
@@ -39,15 +42,34 @@ export default function Weather() {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${apiKey}&units=metric`;
         axios.get(url).then(showweather)
     }
-    function handleSubmit(event) {
+
+    async function handleSubmit(event) {
         event.preventDefault();
+        // handling error
+        try {
+            // Your API call with Axios
+            const apiKey = "bd3bb6534458ba51b48c49f5155745b6";
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=${apiKey}&units=metric`;
+            const response = await axios.get(url);
+
+
+
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                setError(`'${country}' is an invalid Country`);
+            } else {
+                setError('An error occurred while fetching data.');
+            }
+        }
         search();
+    };
 
 
-    }
+
 
     function handlechangeCity(event) {
         setCountry(event.target.value);
+        setError(null);
 
     }
 
@@ -61,14 +83,17 @@ export default function Weather() {
         setTemperature(Math.round(weatherData.temperature));
 
     }
+
+    /* html structure */
     if (ready) {
         return (<div className="weather"> <form onSubmit={handleSubmit}>
             <div className="row">
                 <div className="col-9">
-                    <input type="search" placeholder="Enter a city .." className="form-control" id="search" autoFocus="on" onChange={handlechangeCity} required />
-                </div> <div className="col-3 fw-bold"><input type="submit" value="Search" className="btn" id="submit" />
+                    <input type="search" placeholder="Enter a city .." className="form-control" id="search" autoFocus="on" value={country} onChange={handlechangeCity} required />
+                </div> <div className="col-3 fw-bold"><button type="submit" value="Search" className="btn" id="submit" > Search </button>
                 </div>
             </div></form>
+            {error && <div className="error-message">{error}</div>}
             <div className="d-flex justify-content-between">
                 <div ><h1 className="country">{weatherData.name} </h1></div>
                 <div className="d-flex" id="temperature"><div className="temperature-value"><img className="emoji" src={weatherData.iconUrl} alt="weatherimage" />{Temperature}</div> <div className="unit"><a href="/" onClick={showcelsius}>°C</a> | <a href="/" onClick={showtemperature}>°F</a> </div></div>
@@ -90,11 +115,11 @@ export default function Weather() {
             visible={true}
             height="80"
             width="80"
-            color=" rgb(63, 76, 119)"
+            color=" #0f5a9c"
             ariaLabel="revolving-dot-loading"
             wrapperStyle={{}}
             wrapperClass=""
-        /> </div><div className="text-center fs-5 fw-bold ">Click on the temperature's unit to view the temperature</div></div>)
+        /> </div><div className="text-center fs-5 fw-bold " id="loader-text">Please Wait ...</div></div>)
 
     }
 

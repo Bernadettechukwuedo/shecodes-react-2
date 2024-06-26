@@ -3,29 +3,29 @@
 }
 
 .country{
-    color: #B0B5CC;
+    color: white;
 margin: 20px;
 font-size:50px}
 form{
     margin:20px
 }
 .weather{
-    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
     max-width: 600px;
-    border:2px solid rgb(63, 76, 119);
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);
+    border:2px solid  #fff1eb;
+    border-radius: 4px;
+    
     margin: 40px auto;
 }
 #weather-content-1{
-    background: #B0B5CC;
+    background:#1a73e8;
     padding:10px;
     border-radius: 10px;
-    color:black;
+    color:white;
     width:200px;  
 }
 #temperature{
-    color: #B0B5CC;
+    color: white;
     margin: 20px;
     
 }
@@ -34,31 +34,36 @@ form{
 }
 .temperature-value{
     font-size: 50px;
-    color: #B0B5CC;
+    color: white;
 }
 #weather-content-2{
-    background: #B0B5CC;
+    background:#1a73e8;
     border-radius: 10px;
    padding:10px;
-    color:black;
+    color:White;
     width:200px;  
     
 }
 #search{padding:10px}
 #submit{
-    background:#B0B5CC;
+    background:#1a73e8;
     width: 100px;
     padding:10px;
 }
-#submit:hover{background: #0D6EFD;
-    border: 2px solid #B0B5CC;
-    color:black;}
+#submit:hover{background: #0f5a9c;
+    border: 2px solid #fff1eb;
+    color:white;}
 .emoji{
     
     height: 80px;
    
 }
-a{text-decoration: none;}
+#loader-text{
+    color: #0f5a9c;
+}
+a{text-decoration: none;
+color:#0f5a9c;
+}
 a:hover{
     cursor: pointer;
     color:#B0B5CC;
@@ -76,8 +81,14 @@ justify-content: center;
 margin-top: 200px;
 }
 footer{
-    color:#B0B5CC;
+    color:#1a73e8;
     margin: 20px;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin: 20px;
+    
 }
 @media(max-width : 500px){
   
