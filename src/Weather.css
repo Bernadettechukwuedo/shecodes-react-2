@@ -49,8 +49,8 @@ p{
     position: relative;
     display: flex;
     font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-style: bold;
+    font-weight: normal;
+    
     margin-left: 40px;
 }
 #unit{
