@@ -21,7 +21,7 @@ export default function Weather() {
     if (hours < 10) {
         hours = `0${hours}`
     }
-    if (minute < - 10) {
+    if (minute < 10) {
         minute = `0${minute}`
     }
     function showweather(response) {
