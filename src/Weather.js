@@ -13,6 +13,8 @@ export default function Weather() {
     const [ready, setReady] = useState(false);
     const [Temperature, setTemperature] = useState(weatherData.temperature);
     const [error, setError] = useState(null);
+    const [isCelsiusSelected, setCelsiusSelected] = useState(true);
+    const [isFahrenheitSelected, setFahrenheitSelected] = useState(false);
 
     const newdate = new Date(weatherData.date * 1000);
     const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -57,6 +59,8 @@ export default function Weather() {
 
 
 
+
+
         } catch (error) {
             if (error.response && error.response.status === 404) {
                 setError(`'${country}' is an invalid Country`);
@@ -79,11 +83,16 @@ export default function Weather() {
     function showtemperature(event) {
         event.preventDefault();
         setTemperature(Math.round(weatherData.temperature * (9 / 5) + 32));
+        setCelsiusSelected(false);
+        setFahrenheitSelected(true);
+
 
     }
     function showcelsius(event) {
         event.preventDefault();
         setTemperature(Math.round(weatherData.temperature));
+        setCelsiusSelected(true);
+        setFahrenheitSelected(false);
 
     }
 
@@ -101,17 +110,22 @@ export default function Weather() {
             <Container id="content">
                 <Row>
                     <Col md><div ><h1 className="country">{weatherData.name} </h1></div></Col>
-                    <Col md><div id="temperature"><div className="temperature-value"><img className="emoji" src={weatherData.iconUrl} alt="weatherimage" />{Temperature}</div> <div id="unit"><a href="/" className="text-decoration-none" onClick={showcelsius}>°C</a> | <a href="/" className="text-decoration-none" onClick={showtemperature}>°F</a> </div></div></Col>
+                    <Col md><div id="temperature"><div className="temperature-value"><img className="emoji" src={weatherData.iconUrl} alt="weatherimage" />{Temperature}</div><div id="unit">
+                        <a href="/" className={`text-decoration-none ${isCelsiusSelected ? 'default-focused' : ''}`} onClick={showcelsius}>°C</a> |
+                        <a href="/" className={`text-decoration-none ${isFahrenheitSelected ? 'default-focused' : ''}`} onClick={showtemperature}>°F</a>
+                    </div>
+                    </div></Col>
                 </Row>
             </Container>
 
             <Container >
                 <Row>
-                    <Col md><div id="weather-content-1"><p>Humidity: {weatherData.humidity}% </p>
+                    <Col md><div id="weather-content-1"><div className="content-1"><p>Humidity: {weatherData.humidity}% </p>
                         <p>Wind: {weatherData.wind}km/h </p>
-                    </div></Col>
-                    <Col md><div id="weather-content-2"> <p>{day[newdate.getDay()]} {hours}:{minute}</p>
-                        <p className="text-capitalize">Description: {weatherData.description} </p></div></Col>
+                    </div></div></Col>
+                    <Col md><div id="weather-content-2"><div className="content-2"> <p>{day[newdate.getDay()]} {hours}:{minute}</p>
+
+                        <p className="text-capitalize">Description: {weatherData.description} </p></div></div></Col>
                 </Row>
             </Container>
 
