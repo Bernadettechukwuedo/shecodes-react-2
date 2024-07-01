@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { RevolvingDot } from 'react-loader-spinner'
 
 export default function Weather() {
@@ -68,7 +71,7 @@ export default function Weather() {
 
 
     function handlechangeCity(event) {
-        setCountry(event.target.value);
+        setCountry(event.target.value.trim());
         setError(null);
 
     }
@@ -94,21 +97,25 @@ export default function Weather() {
                 </div>
             </div></form>
             {error && <div className="error-message">{error}</div>}
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-7" ><h1 className="country">{weatherData.name} </h1></div>
-                    <div className="col-md-5" id="temperature"><div className="temperature-value"><img className="emoji" src={weatherData.iconUrl} alt="weatherimage" />{Temperature}</div> <div className="unit"><a href="/" onClick={showcelsius}>°C</a> | <a href="/" onClick={showtemperature}>°F</a> </div></div>
-                </div></div>
-            <div className="d-flex justify-content-around" id="weather-content" >
-                <div id="weather-content-1"><p>Humidity: {weatherData.humidity}% </p>
-                    <p>Wind: {weatherData.wind}km/h </p>
-                </div>
 
-                <div id="weather-content-2"> <p>{day[newdate.getDay()]} {hours}:{minute}</p>
-                    <p className="text-capitalize">Description: {weatherData.description} </p></div>
-            </div>
+            <Container id="content">
+                <Row>
+                    <Col md><div ><h1 className="country">{weatherData.name} </h1></div></Col>
+                    <Col md><div id="temperature"><div className="temperature-value"><img className="emoji" src={weatherData.iconUrl} alt="weatherimage" />{Temperature}</div> <div id="unit"><a href="/" className="text-decoration-none" onClick={showcelsius}>°C</a> | <a href="/" className="text-decoration-none" onClick={showtemperature}>°F</a> </div></div></Col>
+                </Row>
+            </Container>
 
-            <footer className="text-center " id="project-footer">This project was coded by Bernadette Chukwuedo and is open-sourced on <a href="https://github.com/Bernadettechukwuedo/shecodes-react-2" target="blank" rel="noreferrer" >GitHub</a> and hosted on <a href="https://bernadette-weather-website.netlify.app/" target="blank" rel="noreferrer" >Netlify</a></footer></div >)
+            <Container >
+                <Row>
+                    <Col md><div id="weather-content-1"><p>Humidity: {weatherData.humidity}% </p>
+                        <p>Wind: {weatherData.wind}km/h </p>
+                    </div></Col>
+                    <Col md><div id="weather-content-2"> <p>{day[newdate.getDay()]} {hours}:{minute}</p>
+                        <p className="text-capitalize">Description: {weatherData.description} </p></div></Col>
+                </Row>
+            </Container>
+
+            <footer className="text-center " id="project-footer">This project was coded by Bernadette Chukwuedo and is open-sourced on <a href="https://github.com/Bernadettechukwuedo/shecodes-react-2" target="blank" rel="noreferrer" className="text-decoration-none">GitHub</a> and hosted on <a href="https://bernadette-weather-website.netlify.app/" target="blank" rel="noreferrer" className="text-decoration-none" >Netlify</a></footer></div >)
 
     } else {
 
